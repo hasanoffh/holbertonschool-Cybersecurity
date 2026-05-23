@@ -1,3 +1,2 @@
 #!/bin/bash
-IFS=. read -r o1 o2 o3 o4 <<< "$1"
-printf "%08d.%08d.%08d.%08d\n" $(echo "obase=2; $o1" | bc) $(echo "obase=2; $o2" | bc) $(echo "obase=2; $o3" | bc) $(echo "obase=2; $o4" | bc)
+printf "%08d.%08d.%08d.%08d\n" $(echo "obase=2; $(echo $1 | cut -d. -f1)" | bc) $(echo "obase=2; $(echo $1 | cut -d. -f2)" | bc) $(echo "obase=2; $(echo $1 | cut -d. -f3)" | bc) $(echo "obase=2; $(echo $1 | cut -d. -f4)" | bc)
