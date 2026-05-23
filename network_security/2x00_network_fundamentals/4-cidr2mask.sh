@@ -1,3 +1,3 @@
 #!/bin/bash
-m=$1; for i in {1..4}; do printf "%d" $((m>=8?255:m<=0?0:256-2**(8-m))); [ $i -lt 4 ] && printf .; ((m-=8)); done
-:
+python3 -c "import sys; n=int(sys.argv[1]); mask=0xFFFFFFFF^((1<<(32-n))-1) if n>0 else 0; print('.'.join(str((mask>>(8*i))&0xFF) for i in [3,2,1,0]))" $1
+
