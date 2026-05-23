@@ -1,2 +1,4 @@
 #!/bin/bash
-IFS=. read -r a b c d <<< "$1"; IFS=. read -r e f g h <<< "$2"; printf "%d.%d.%d.%d\n" "$((a | (255 ^ e)))" "$((b | (255 ^ f)))" "$((c | (255 ^ g)))" "$((d | (255 ^ h)))"
+IFS=. read -r i1 i2 i3 i4 <<< "$1"
+IFS=. read -r m1 m2 m3 m4 <<< "$2"
+echo -n "$((i1 | (255 - m1))).$((i2 | (255 - m2))).$((i3 | (255 - m3))).$((i4 | (255 - m4)))"
